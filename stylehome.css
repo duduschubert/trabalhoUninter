@@ -1,0 +1,277 @@
+/* ============ VARIÁVEIS E RESET ============ */
+:root {
+  --azul-profundo: #2c3e50;
+  --azul-vivo: #3498db;
+  --vermelho-energico: #e74c3c;
+  --branco-suave: #f9f9f9;
+  --cinza-claro: #ecf0f1;
+  --cinza-texto: #333333;
+  --cinza-secundario: #7f8c8d;
+  --sombra-padrao: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --transicao-padrao: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+  --borda-arredondada: 6px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+body {
+  font-family: "Segoe UI", "Roboto", "Helvetica Neue", sans-serif;
+  color: var(--cinza-texto);
+  background-color: var(--branco-suave);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ============ TIPOGRAFIA ============ */
+h1,
+h2,
+h3 {
+  font-family: "Montserrat", "Arial Narrow", sans-serif;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--azul-profundo);
+  margin-bottom: 1.25rem;
+}
+
+h1 {
+  font-size: 2.75rem;
+  letter-spacing: -0.5px;
+  text-transform: none;
+}
+
+h2 {
+  font-size: 2rem;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.5rem;
+}
+
+h2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background: var(--azul-vivo);
+  transition: var(--transicao-padrao);
+}
+
+p {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  color: var(--cinza-texto);
+  line-height: 1.7;
+}
+
+a {
+  color: var(--azul-vivo);
+  text-decoration: none;
+  transition: var(--transicao-padrao);
+  font-weight: 500;
+}
+
+a:hover {
+  color: var(--vermelho-energico);
+  text-decoration: underline;
+}
+
+/* ============ LAYOUT ============ */
+.container {
+  width: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ============ CABEÇALHO ============ */
+.cabecalho {
+  background-color: white;
+  box-shadow: var(--sombra-padrao);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 1rem 0;
+}
+
+.navegacao {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.menu-principal {
+  display: flex;
+  list-style: none;
+  gap: 1.75rem;
+}
+
+.menu-principal li a {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--azul-profundo);
+  padding: 0.5rem 0;
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.menu-principal li a::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--vermelho-energico);
+  transition: var(--transicao-padrao);
+}
+
+.menu-principal li a:hover::before {
+  width: 100%;
+}
+
+/* ============ DESTAQUE ============ */
+.destaque {
+  background: linear-gradient(135deg, var(--azul-profundo), var(--azul-vivo));
+  color: white;
+  padding: 5rem 0;
+  text-align: center;
+}
+
+.destaque h1 {
+  color: white;
+  font-size: 3.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.destaque p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.25rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* ============ SOBRE MIM ============ */
+.secao-sobre {
+  padding: 4.5rem 0;
+  background-color: white;
+}
+
+.conteudo-sobre {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 3.5rem;
+  align-items: flex-start;
+}
+
+.foto-perfil {
+  width: 100%;
+  height: 280px;
+  border-radius: var(--borda-arredondada);
+  overflow: hidden;
+  box-shadow: var(--sombra-padrao);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.foto-perfil img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: var(--transicao-padrao);
+}
+
+.foto-perfil:hover img {
+  transform: scale(1.03);
+}
+
+.texto-sobre {
+  padding-top: 0.5rem;
+}
+
+.texto-sobre hr {
+  border: 0;
+  height: 1px;
+  background: #eee;
+  margin: 2rem 0;
+}
+
+/* ============ RODAPÉ ============ */
+.rodape {
+  background: var(--azul-profundo);
+  color: white;
+  padding: 2.5rem 0;
+  text-align: center;
+}
+
+.conteudo-rodape p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.95rem;
+}
+
+/* ============ RESPONSIVIDADE ============ */
+@media (max-width: 992px) {
+  .conteudo-sobre {
+    grid-template-columns: 1fr;
+  }
+
+  .foto-perfil {
+    max-width: 280px;
+    margin: 0 auto 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 15px;
+  }
+
+  .destaque h1 {
+    font-size: 2.5rem;
+  }
+
+  .menu-principal {
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .menu-principal {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: flex-end;
+  }
+
+  .destaque {
+    padding: 3.5rem 0;
+  }
+
+  .secao-sobre {
+    padding: 3rem 0;
+  }
+
+  .container {
+    padding: 0 1.25rem;
+  }
+}
+
+/* ============ EFEITOS ESPECIAIS ============ */
+.link-destaque {
+  font-weight: 600;
+  color: var(--vermelho-energico);
+}
+
+.link-destaque:hover {
+  text-decoration: underline;
+  opacity: 0.9;
+}

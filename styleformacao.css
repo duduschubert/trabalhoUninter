@@ -1,0 +1,290 @@
+/* ============ VARIÁVEIS E RESET ============ */
+:root {
+  --azul-profundo: #2c3e50;
+  --azul-vivo: #3498db;
+  --vermelho-energico: #e74c3c;
+  --branco-suave: #f9f9f9;
+  --cinza-claro: #ecf0f1;
+  --cinza-texto: #333333;
+  --cinza-secundario: #7f8c8d;
+  --sombra-padrao: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --transicao-padrao: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+  --borda-arredondada: 6px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+body {
+  font-family: "Segoe UI", "Roboto", "Helvetica Neue", sans-serif;
+  color: var(--cinza-texto);
+  background-color: var(--branco-suave);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ============ TIPOGRAFIA ============ */
+h1,
+h2,
+h3 {
+  font-family: "Montserrat", "Arial Narrow", sans-serif;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--azul-profundo);
+  margin-bottom: 1.25rem;
+}
+
+h1 {
+  font-size: 2.75rem;
+  letter-spacing: -0.5px;
+  text-transform: none;
+}
+
+h2 {
+  font-size: 2rem;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.5rem;
+}
+
+h2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background: var(--azul-vivo);
+  transition: var(--transicao-padrao);
+}
+
+p {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  color: var(--cinza-texto);
+  line-height: 1.7;
+}
+
+a {
+  color: var(--azul-vivo);
+  text-decoration: none;
+  transition: var(--transicao-padrao);
+  font-weight: 500;
+}
+
+a:hover {
+  color: var(--vermelho-energico);
+  text-decoration: underline;
+}
+
+/* ============ LAYOUT ============ */
+.container {
+  width: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ============ CABEÇALHO ============ */
+.cabecalho {
+  background-color: white;
+  box-shadow: var(--sombra-padrao);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 1rem 0;
+}
+
+.navegacao {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.menu-principal {
+  display: flex;
+  list-style: none;
+  gap: 1.75rem;
+}
+
+.menu-principal li a {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--azul-profundo);
+  padding: 0.5rem 0;
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.menu-principal li a::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--vermelho-energico);
+  transition: var(--transicao-padrao);
+}
+
+.menu-principal li a:hover::before {
+  width: 100%;
+}
+
+.link-ativo {
+  color: var(--vermelho-energico) !important;
+}
+
+.link-ativo::before {
+  width: 100% !important;
+}
+
+/* ============ PÁGINA DE FORMAÇÃO ============ */
+.pagina-formacao {
+  padding: 4rem 0;
+  background-color: white;
+}
+
+/* Ajuste do cabeçalho da página */
+.cabecalho-formacao {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+/* ===================== LAYOUT FLEX IMAGEM + TEXTO ===================== */
+.conteudo-formacao {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Flex container para imagem à esquerda e texto à direita */
+.conteudo-formacao section {
+  display: flex;
+  gap: 2.5rem;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+/* Estiliza a imagem destaque */
+.imagem-destaque {
+  width: 300px;
+  height: auto;
+  border-radius: var(--borda-arredondada);
+  box-shadow: var(--sombra-padrao);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: var(--transicao-padrao);
+  flex-shrink: 0;
+}
+
+.imagem-destaque:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Texto ao lado da imagem */
+.conteudo-formacao article {
+  flex: 1;
+  min-width: 280px;
+}
+
+.conteudo-formacao strong {
+  color: var(--azul-profundo);
+  font-weight: 600;
+}
+
+.conteudo-formacao hr {
+  border: 0;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--azul-vivo),
+    transparent
+  );
+  margin: 2.5rem 0;
+  opacity: 0.5;
+}
+
+/* ============ RODAPÉ ============ */
+.rodape {
+  background: var(--azul-profundo);
+  color: white;
+  padding: 2.5rem 0;
+  text-align: center;
+}
+
+.conteudo-rodape p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.95rem;
+}
+
+/* ============ RESPONSIVIDADE ============ */
+@media (max-width: 992px) {
+  .conteudo-formacao {
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 15px;
+  }
+
+  .pagina-formacao {
+    padding: 2.5rem 0;
+  }
+
+  .imagem-destaque {
+    width: 250px;
+  }
+}
+
+@media (max-width: 576px) {
+  .menu-principal {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: flex-end;
+  }
+
+  .container {
+    padding: 0 1.25rem;
+  }
+
+  /* No mobile empilha imagem e texto */
+  .conteudo-formacao section {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .conteudo-formacao article {
+    text-align: left;
+    padding-top: 1rem;
+    max-width: 100%;
+  }
+
+  .imagem-destaque {
+    margin: 0 auto;
+    width: 200px;
+  }
+}
+
+/* ============ EFEITOS ESPECIAIS ============ */
+.link-destaque {
+  font-weight: 600;
+  color: var(--vermelho-energico);
+}
+
+.link-destaque:hover {
+  text-decoration: underline;
+  opacity: 0.9;
+}
